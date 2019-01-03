@@ -32,6 +32,7 @@ class BinaryClassifierApp(BinaryClassifierViewer):
         self.btn_false.clicked.connect(self._on_click_left)
         self.btn_true.clicked.connect(self._on_click_right)
         self.btn_confirm.clicked.connect(self.export)
+        self.btn_up.clicked.connect(self._on_click_up)
         self._load_history()
         self._render_image()
 
@@ -72,6 +73,7 @@ class BinaryClassifierApp(BinaryClassifierViewer):
             ))
         self.btn_false.setText('< False ({})'.format(counter[0]))
         self.btn_true.setText('True ({}) >'.format(counter[1]))
+        self.btn_up.setText('Maybe ({}) ^'.format(counter[-1]))
 
     def _undo_image(self):
         if self.image_index == 0:
@@ -131,6 +133,15 @@ class BinaryClassifierApp(BinaryClassifierViewer):
             self._render_image()
 
     @pyqtSlot()
+    def _on_click_up(self):
+        if self.image_index == len(self.image_paths) - 1:
+            QMessageBox.warning(self, 'Warning', 'Reach the end of images')
+        else:
+            self.image_label[self.image_paths[self.image_index]] = -1
+            self.image_index = min(self.image_index+1, len(self.image_paths) - 1)
+            self._render_image()
+
+    @pyqtSlot()
     def export(self):
         orderdict = OrderedDict(sorted(self.image_label.items(), key=lambda x: x[0]))
         df = pd.DataFrame(data={'image': list(orderdict.keys()), 'label': list(orderdict.values())}, dtype='uint8')
@@ -142,6 +153,8 @@ class BinaryClassifierApp(BinaryClassifierViewer):
             self.btn_false.click()
         elif event.key() == Qt.Key_Right or event.key() == Qt.Key_D:
             self.btn_true.click()
+        elif event.key() == Qt.Key_Up or event.key() == Qt.Key_W:
+            self.btn_up.click()
         elif event.key() == Qt.Key_U:
             self._undo_image()
         elif event.key() == Qt.Key_PageUp:
