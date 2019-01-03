@@ -2,7 +2,7 @@
 
 A simple tool for pre-labeling the image and classification
 
-![demo](https://i.imgur.com/Lh6KDy0.jpg)
+![demo](https://i.imgur.com/Lh6KDy0m.jpg)
 
 ## Requirement
 
