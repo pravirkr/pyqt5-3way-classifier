@@ -6,13 +6,13 @@ A simple tool for pre-labeling the image and classification
 
 ## Requirement
 
-- PyQt4
+- PyQt5
 - Pandas
 
 ### Ubuntu
 
 ```
-sudo apt-get install python3-pyqt5
+sudo apt-get install python3-pyqt5 python3-pandas
 ```
 
 ## Usage
