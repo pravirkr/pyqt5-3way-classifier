@@ -2,12 +2,12 @@
 
 A simple tool for pre-labeling the image and classification
 
-![demo](http://optipng.sourceforge.net/pngtech/img/lena.png)
+![demo](https://i.imgur.com/Lh6KDy0.jpg)
 
 ## Requirement
 
--PyQt4
--Pandas
+- PyQt4
+- Pandas
 
 ### Ubuntu
 
