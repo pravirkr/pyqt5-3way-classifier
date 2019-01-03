@@ -1,12 +1,13 @@
-# pyqt5-binary-classifier
+# pyqt5-3way-classifier
 
 A simple tool for pre-labeling the image and classification
 
-![demo](https://i.imgur.com/LGp29yO.jpg)
+![demo](http://optipng.sourceforge.net/pngtech/img/lena.png)
 
 ## Requirement
 
-Please to install PyQt5 in you platform.
+-PyQt4
+-Pandas
 
 ### Ubuntu
 
@@ -31,6 +32,7 @@ optional arguments:
 
 - Press 'A' to label false
 - Press 'D' to label true
+- Press 'W' to label maybe
 - Press 'U' to undo
 - Press 'PageUp' goto previous unlabeled image
 - Press 'PageDown' goto next unlabeled image
