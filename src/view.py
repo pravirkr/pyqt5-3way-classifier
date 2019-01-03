@@ -13,7 +13,7 @@ from PyQt5.QtGui import QPixmap, QFont, QPalette
 LOGGER = logging.getLogger(__name__)
 
 class BinaryClassifierViewer(QWidget):
-    def __init__(self, title='PyQt5 binary classifier'):
+    def __init__(self, title='PyQt5 3way classifier'):
         super().__init__()
         self.title = title
         self.desktop = QDesktopWidget()
