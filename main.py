@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import logging
 import os
 import sys
@@ -14,7 +16,7 @@ LOGGERS = [
 ]
 
 def argparser():
-    parser = argparse.ArgumentParser('Binary Classifier building with PyQt5')
+    parser = argparse.ArgumentParser('3-way Classifier building with PyQt5')
     parser.add_argument('--img-dir', dest='imgdir', required=True)
     parser.add_argument('--history', dest='history', default='results.csv')
     parser.add_argument('--out', dest='outfile', default='results.csv')
