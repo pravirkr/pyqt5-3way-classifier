@@ -1,8 +1,6 @@
-# pyqt5-3way-classifier
+# cand_viewer
 
 A simple tool for pre-labeling the image and classification
-
-![demo](https://i.imgur.com/Lh6KDy0m.jpg)
 
 ## Requirement
 

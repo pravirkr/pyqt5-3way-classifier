@@ -1,19 +1,15 @@
-import logging
-
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QDesktopWidget
 from PyQt5.QtWidgets import QHBoxLayout
 from PyQt5.QtWidgets import QGridLayout
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtGui import QPixmap, QFont, QPalette
+from PyQt5.QtGui import QFont
 
-LOGGER = logging.getLogger(__name__)
 
-class BinaryClassifierViewer(QWidget):
-    def __init__(self, title='PyQt5 3way classifier'):
+class ClassifierViewer(QWidget):
+    def __init__(self, title="Transient candidates classifier"):
         super().__init__()
         self.title = title
         self.desktop = QDesktopWidget()
@@ -31,24 +27,24 @@ class BinaryClassifierViewer(QWidget):
         self.setLayout(self.grid_root)
 
         self.label_head = QLabel(self)
-        self.btn_false = QPushButton('< False', self)
-        self.btn_true = QPushButton('True >', self)
-        self.btn_up = QPushButton('Maybe^', self)
+        self.btn_false = QPushButton("< False", self)
+        self.btn_true = QPushButton("True >", self)
+        self.btn_up = QPushButton("Maybe^", self)
         self.label_status = QLabel(self)
-        self.btn_confirm = QPushButton('Confirm', self)
+        self.btn_confirm = QPushButton("Confirm", self)
         self.font_default = QFont()
         self.font_button = QFont()
 
         self.font_default.setBold(True)
-        self.font_default.setPointSize(24)
+        self.font_default.setPointSize(12)
         self.font_button.setPointSize(12)
 
         self.btn_false.setFont(self.font_default)
-        self.btn_false.setStyleSheet('background-color : #ffa5a5')
+        self.btn_false.setStyleSheet("background-color : #ffa5a5")
         self.btn_true.setFont(self.font_default)
-        self.btn_true.setStyleSheet('background-color: #c4ffc1')
+        self.btn_true.setStyleSheet("background-color: #c4ffc1")
         self.btn_up.setFont(self.font_default)
-        self.btn_up.setStyleSheet('background-color: #feffa8')
+        self.btn_up.setStyleSheet("background-color: #feffa8")
         self.label_status.setFont(self.font_default)
         self.btn_confirm.setFont(self.font_button)
 
@@ -60,9 +56,3 @@ class BinaryClassifierViewer(QWidget):
         self.hbox_body.addWidget(self.btn_true, Qt.AlignCenter)
         self.hbox_foot.addWidget(self.label_status, Qt.AlignLeft)
         self.hbox_foot.addWidget(self.btn_confirm, 0, Qt.AlignRight)
-
-if __name__ == '__main__':
-    import sys
-    app = QApplication(sys.argv)
-    viewer = BinaryClassifierViewer()
-    app.exec()
