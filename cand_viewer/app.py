@@ -12,6 +12,8 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
 
+from rich.logging import RichHandler
+
 from cand_viewer.view import ClassifierViewer
 
 
@@ -29,6 +31,7 @@ class ClassifierApp(ClassifierViewer):
         self.btn_true.clicked.connect(self._on_click_right)
         self.btn_confirm.clicked.connect(self.export)
         self.btn_up.clicked.connect(self._on_click_up)
+        self.logger.info(f"Loaded image paths - {self.num_images} images")
 
         if self.history_file is not None:
             self.history_file = Path(self.history_file)
@@ -193,4 +196,19 @@ class ClassifierApp(ClassifierViewer):
             self.logger.debug(f"You Clicked {event.key()} but nothing happened...")
 
     def _configure_logger(self) -> None:
-        self.logger = logging.getLogger("ClassifierApp")
+        logger = logging.getLogger("ClassifierApp")
+        logger.setLevel(logging.INFO)
+
+        logformat = "- %(name)s - %(message)s"
+        formatter = logging.Formatter(fmt=logformat)
+
+        if not logger.hasHandlers():
+            handler = RichHandler(
+                show_level=False,
+                show_path=False,
+                rich_tracebacks=True,
+                log_time_format='%Y-%m-%d %H:%M:%S',
+            )
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
+        self.logger = logger
